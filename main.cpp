@@ -225,7 +225,17 @@ public:
                 int from, to;
                 cout << "From To: ";
                 cin >> from >> to;
-                moveTableauToTableau(from, to);
+            
+                if(cin.fail() || from < 0 || from > 6 || to < 0 || to > 6) {
+                    cout << "Invalid input!\n";
+                    cin.clear();
+                    cin.ignore(1000, '\n');
+                    continue;
+                }
+            
+                if(!moveTableauToTableau(from, to)) {
+                    cout << "Move not valid!\n";
+                }
             }
             if (cmd == 4) {
                 int col;
